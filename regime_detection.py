@@ -63,7 +63,8 @@ def compare_returns(returns, features):
                 r1 = aligned_returns[features['regime'] == i]
                 r2 = aligned_returns[features['regime'] == j]
                 t_stat, p_val = ttest_ind(r1, r2, equal_var=False)
-                print(f"Regime {i} vs {j}: p = {p_val:.4f}")
+                print(f"Regime {i} vs {j}: p = {p_val.item():.4f}")
+
 
 
 # === Run everything ===
