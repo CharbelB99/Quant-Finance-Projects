@@ -16,8 +16,9 @@ N_CLUSTERS = 3
 
 # === Step 1: Download data ===
 def get_data(ticker, start, end):
-    data = yf.download(ticker, start=start, end=end)
+    data = yf.download(ticker, start=start, end=end, auto_adjust=False)
     return data["Adj Close"]
+
 
 # === Step 2: Feature engineering ===
 def compute_features(price_series, window):
