@@ -52,15 +52,19 @@ def plot_regimes(price_series, features):
 
 # === Step 5: Hypothesis Testing ===
 def compare_returns(returns, features):
-    print("T-test between regime pairs:")
+    # Align indices before comparison
+    aligned_returns = returns.loc[features.index]
+
     regimes = features['regime'].unique()
+    print("T-test between regime pairs:")
     for i in regimes:
         for j in regimes:
             if i < j:
-                r1 = returns[features['regime'] == i]
-                r2 = returns[features['regime'] == j]
+                r1 = aligned_returns[features['regime'] == i]
+                r2 = aligned_returns[features['regime'] == j]
                 t_stat, p_val = ttest_ind(r1, r2, equal_var=False)
                 print(f"Regime {i} vs {j}: p = {p_val:.4f}")
+
 
 # === Run everything ===
 if __name__ == "__main__":
