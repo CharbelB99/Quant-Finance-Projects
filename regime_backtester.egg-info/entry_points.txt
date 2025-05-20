@@ -1,0 +1,2 @@
+[console_scripts]
+regime-backtest = regime_backtester.cli:main
